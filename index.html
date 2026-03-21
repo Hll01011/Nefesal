@@ -7,107 +7,875 @@
   <meta name="description" content="Sağlık, kişisel gelişim ve seyahat üzerine samimi bir Türkçe blog." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Cabinet+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ── RESET ─────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Cabinet Grotesk', system-ui, sans-serif;
+      background: #F5F0E8;
+      color: #1C1914;
+      font-size: 16px;
+      line-height: 1.6;
+      cursor: none;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── CUSTOM CURSOR ──────────────────── */
+    .cursor {
+      width: 10px; height: 10px;
+      background: #1C1914;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform .1s ease, width .3s ease, height .3s ease, background .3s ease;
+      mix-blend-mode: multiply;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(28,25,20,.35);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform .12s ease, width .3s ease, height .3s ease;
+    }
+    .cursor.hover { width: 6px; height: 6px; background: #B85C2A; }
+    .cursor-ring.hover { width: 52px; height: 52px; border-color: rgba(184,92,42,.4); }
+
+    /* ── NAV ────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      mix-blend-mode: multiply;
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      font-style: italic;
+      letter-spacing: -.02em;
+      color: #1C1914;
+    }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #1C1914;
+      opacity: .6;
+      transition: opacity .2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-toggle { display: none; background: none; border: none; cursor: none; flex-direction: column; gap: 5px; padding: 6px; }
+    .nav-toggle span { display: block; width: 22px; height: 1.5px; background: #1C1914; border-radius: 2px; transition: all .25s; }
+
+    /* ── HERO ───────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 120px 48px 72px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #B85C2A;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp .6s ease .1s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -.04em;
+      color: #1C1914;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp .7s ease .25s forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: #B85C2A;
+    }
+    .hero-title .line2 {
+      display: block;
+      padding-left: 3rem;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #5C5448;
+      max-width: 400px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp .7s ease .4s forwards;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp .6s ease .55s forwards;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #1C1914;
+      color: #F5F0E8;
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      padding: 14px 28px;
+      border-radius: 40px;
+      transition: all .3s ease;
+    }
+    .cta-btn:hover { background: #B85C2A; transform: translateY(-2px); }
+    .cta-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px; height: 44px;
+      border: 1px solid rgba(28,25,20,.2);
+      border-radius: 50%;
+      font-size: 1.1rem;
+      transition: all .3s ease;
+    }
+    .cta-arrow:hover { border-color: #B85C2A; color: #B85C2A; transform: rotate(45deg); }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Büyük dekoratif tipografi */
+    .hero-deco-text {
+      position: absolute;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(120px, 18vw, 220px);
+      font-weight: 900;
+      font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(28,25,20,.08);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-6deg);
+      animation: slowDrift 20s ease-in-out infinite alternate;
+    }
+
+    .hero-circle {
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #E8DCC8 0%, #D4C4A8 50%, #C8B090 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      position: relative;
+      z-index: 2;
+      animation: floatCircle 6s ease-in-out infinite;
+      box-shadow: 0 40px 80px rgba(28,25,20,.12);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #8C8070;
+      opacity: 0;
+      animation: fadeUp .6s ease .8s forwards;
+    }
+    .hero-scroll-line {
+      width: 40px;
+      height: 1px;
+      background: #8C8070;
+      transform-origin: left;
+      animation: lineGrow 1s ease 1s forwards;
+      transform: scaleX(0);
+    }
+
+    /* ── MARQUEE ────────────────────────── */
+    .marquee-wrap {
+      overflow: hidden;
+      border-top: 1px solid rgba(28,25,20,.1);
+      border-bottom: 1px solid rgba(28,25,20,.1);
+      padding: 16px 0;
+      background: #EEE7D6;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      width: max-content;
+      animation: marquee 20s linear infinite;
+    }
+    .marquee-item {
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: #8C8070;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: #B85C2A; flex-shrink: 0; }
+
+    /* ── KATEGORİLER ────────────────────── */
+    .kategoriler {
+      padding: 120px 48px;
+    }
+    .kat-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 64px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(28,25,20,.1);
+    }
+    .kat-header-sayi {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      color: #B85C2A;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .kat-header h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+    }
+    .kat-header-link {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #8C8070;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+    }
+    .kat-header-link:hover { color: #B85C2A; }
+
+    .kat-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2px;
+    }
+
+    .kat-kart {
+      position: relative;
+      overflow: hidden;
+      background: #EEE7D6;
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 380px;
+      transition: background .4s ease;
+      cursor: none;
+    }
+    .kat-kart::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #1C1914;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform .5s cubic-bezier(.76,0,.24,1);
+      z-index: 0;
+    }
+    .kat-kart:hover::before { transform: scaleY(1); }
+    .kat-kart:hover .kat-icon { transform: scale(1.1) rotate(-5deg); }
+    .kat-kart:hover .kat-isim { color: #F5F0E8; }
+    .kat-kart:hover .kat-aciklama { color: rgba(245,240,232,.6); }
+    .kat-kart:hover .kat-link { color: #B85C2A; }
+    .kat-kart:hover .kat-num { color: rgba(245,240,232,.2); }
+
+    .kat-num {
+      position: absolute;
+      top: 32px; right: 36px;
+      font-family: 'Fraunces', serif;
+      font-size: 4rem;
+      font-weight: 800;
+      color: rgba(28,25,20,.06);
+      line-height: 1;
+      transition: color .4s;
+      z-index: 1;
+    }
+    .kat-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      transition: transform .4s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .kat-isim {
+      font-family: 'Fraunces', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: #1C1914;
+      margin-bottom: 12px;
+      transition: color .4s;
+      position: relative;
+      z-index: 1;
+      line-height: 1.1;
+    }
+    .kat-aciklama {
+      font-size: .9rem;
+      font-weight: 300;
+      color: #5C5448;
+      line-height: 1.65;
+      margin-bottom: 24px;
+      transition: color .4s;
+      position: relative;
+      z-index: 1;
+    }
+    .kat-link {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #B85C2A;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .3s, gap .3s;
+      position: relative;
+      z-index: 1;
+    }
+    .kat-kart:hover .kat-link { gap: 14px; }
+
+    /* ── SON YAZILAR ────────────────────── */
+    .son-yazilar {
+      padding: 0 48px 120px;
+    }
+    .yazilar-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 64px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(28,25,20,.1);
+    }
+    .yazilar-header-sayi {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      color: #B85C2A;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .yazilar-header h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+    }
+
+    .yazilar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .yazi-kart {
+      background: #EEE7D6;
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      transition: background .3s ease;
+      cursor: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .yazi-kart::after {
+      content: '→';
+      position: absolute;
+      bottom: 32px; right: 36px;
+      font-size: 1.2rem;
+      color: #B85C2A;
+      opacity: 0;
+      transform: translate(-8px, 8px);
+      transition: all .3s ease;
+    }
+    .yazi-kart:hover { background: #E8DECA; }
+    .yazi-kart:hover::after { opacity: 1; transform: translate(0, 0); }
+
+    .yazi-kart.buyuk {
+      grid-column: span 2;
+      background: #1C1914;
+      color: #F5F0E8;
+    }
+    .yazi-kart.buyuk::after { color: #B85C2A; }
+    .yazi-kart.buyuk:hover { background: #2A2520; }
+    .yazi-kart.buyuk .yazi-meta-tarih { color: rgba(245,240,232,.4); }
+    .yazi-kart.buyuk .yazi-baslik { color: #F5F0E8; }
+    .yazi-kart.buyuk .yazi-ozet { color: rgba(245,240,232,.55); }
+
+    .yazi-kat-etiket {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+    .et-beden { background: rgba(184,92,42,.12); color: #B85C2A; }
+    .et-zihin { background: rgba(78,108,160,.12); color: #4E6CA0; }
+    .et-yol   { background: rgba(72,128,90,.12);  color: #48805A; }
+
+    .yazi-meta-tarih {
+      font-size: .72rem;
+      color: #8C8070;
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+    .yazi-baslik {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.25;
+      color: #1C1914;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+    .yazi-kart.buyuk .yazi-baslik { font-size: 1.8rem; }
+    .yazi-ozet {
+      font-size: .88rem;
+      font-weight: 300;
+      color: #5C5448;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .yazi-devam {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #B85C2A;
+    }
+
+    /* ── HAKKIMDA BANT ──────────────────── */
+    .hakkimda-bant {
+      margin: 0 48px 120px;
+      background: #1C1914;
+      border-radius: 24px;
+      padding: 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .hakkimda-bant::before {
+      content: 'N';
+      font-family: 'Fraunces', serif;
+      font-size: 400px;
+      font-weight: 900;
+      font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(245,240,232,.04);
+      position: absolute;
+      right: -40px;
+      bottom: -100px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .hakkimda-ust {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #B85C2A;
+      margin-bottom: 20px;
+    }
+    .hakkimda-bant h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.15;
+      color: #F5F0E8;
+      margin-bottom: 24px;
+    }
+    .hakkimda-bant p {
+      font-size: .95rem;
+      font-weight: 300;
+      color: rgba(245,240,232,.55);
+      line-height: 1.8;
+    }
+    .hakkimda-sag {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .hakkimda-stat {
+      border-top: 1px solid rgba(245,240,232,.1);
+      padding-top: 20px;
+    }
+    .stat-sayi {
+      font-family: 'Fraunces', serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #F5F0E8;
+      letter-spacing: -.04em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: .78rem;
+      font-weight: 400;
+      color: rgba(245,240,232,.4);
+      letter-spacing: .06em;
+    }
+    .hakkimda-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(245,240,232,.2);
+      color: #F5F0E8;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      border-radius: 40px;
+      margin-top: 8px;
+      transition: all .3s ease;
+      width: fit-content;
+    }
+    .hakkimda-btn:hover { border-color: #B85C2A; color: #B85C2A; }
+
+    /* ── FOOTER ─────────────────────────── */
+    footer {
+      padding: 48px;
+      border-top: 1px solid rgba(28,25,20,.1);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 32px;
+    }
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      font-style: italic;
+      letter-spacing: -.02em;
+    }
+    .footer-nav {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-nav a {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #8C8070;
+      transition: color .2s;
+    }
+    .footer-nav a:hover { color: #1C1914; }
+    .footer-copy {
+      font-size: .75rem;
+      color: #8C8070;
+      text-align: right;
+    }
+
+    /* ── ANİMASYONLAR ────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes floatCircle {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50%       { transform: translateY(-16px) rotate(3deg); }
+    }
+    @keyframes slowDrift {
+      0%   { transform: translate(-50%,-50%) rotate(-6deg) scale(1); }
+      100% { transform: translate(-46%,-52%) rotate(-4deg) scale(1.04); }
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes lineGrow {
+      to { transform: scaleX(1); }
+    }
+
+    /* ── RESPONSIVE ─────────────────────── */
+    @media (max-width: 900px) {
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+      .nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: #F5F0E8; padding: 20px 24px; gap: 4px; }
+      .nav-toggle { display: flex; cursor: pointer; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 100px 24px 48px; }
+      .hero-right { min-height: 300px; }
+      .hero-circle { width: 220px; height: 220px; font-size: 52px; }
+      .hero-scroll { left: 24px; }
+      .kategoriler, .son-yazilar { padding: 80px 24px; }
+      .kat-grid { grid-template-columns: 1fr; gap: 2px; }
+      .kat-kart { min-height: 260px; }
+      .yazilar-grid { grid-template-columns: 1fr; }
+      .yazi-kart.buyuk { grid-column: span 1; }
+      .hakkimda-bant { margin: 0 24px 80px; padding: 48px 32px; grid-template-columns: 1fr; gap: 40px; border-radius: 16px; }
+      footer { grid-template-columns: 1fr; gap: 16px; padding: 32px 24px; }
+      .footer-copy { text-align: left; }
+    }
+  </style>
 </head>
 <body>
 
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
   <!-- NAV -->
-  <header class="site-header">
-    <nav class="nav container">
-      <a href="/" class="logo">🌿 Nefes Al</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="beden/">💪 Beden</a></li>
-        <li><a href="zihin/">🧠 Zihin</a></li>
-        <li><a href="yol/">🧭 Yol</a></li>
-        <li><a href="hakkimda/">Hakkımda</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav class="nav">
+    <a href="/" class="nav-logo">🌿 Nefes Al</a>
+    <button class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="beden/">Beden</a></li>
+      <li><a href="zihin/">Zihin</a></li>
+      <li><a href="yol/">Yol</a></li>
+      <li><a href="hakkimda/">Hakkımda</a></li>
+    </ul>
+  </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="container hero-inner">
-      <span class="hero-eyebrow">Hoş geldin ✦</span>
-      <h1 class="hero-title">Her gün biraz<br><em>daha iyi.</em></h1>
-      <p class="hero-sub">Sağlık, zihin ve seyahat üzerine; süslü değil, samimi yazılar.</p>
-      <a href="#son-yazilar" class="btn-primary">Yazılara göz at</a>
+    <div class="hero-left">
+      <span class="hero-eyebrow">Hayata dair — 2025</span>
+      <h1 class="hero-title">
+        Her gün<br>
+        <em>biraz</em>
+        <span class="line2">daha iyi.</span>
+      </h1>
+      <p class="hero-sub">Sağlık, zihin ve seyahat üzerine; süslü değil, gerçek yazılar. Mükemmel olmak için değil, daha iyi hissetmek için.</p>
+      <div class="hero-cta">
+        <a href="#son-yazilar" class="cta-btn">Yazılara göz at <span>↓</span></a>
+        <a href="hakkimda/" class="cta-arrow" title="Hakkımda">↗</a>
+      </div>
     </div>
-    <div class="hero-deco" aria-hidden="true">
-      <div class="deco-circle c1"></div>
-      <div class="deco-circle c2"></div>
-      <div class="deco-leaf">🌿</div>
+    <div class="hero-right">
+      <span class="hero-deco-text">iyi.</span>
+      <div class="hero-circle">🌿</div>
+    </div>
+    <div class="hero-scroll">
+      <span class="hero-scroll-line"></span>
+      Aşağı kaydır
     </div>
   </section>
 
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-dot"></span> Sağlıklı Yaşam</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Kişisel Gelişim</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Seyahat & Keşif</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Sabah Rutinleri</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Zihinsel Denge</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Alışkanlıklar</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Sağlıklı Yaşam</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Kişisel Gelişim</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Seyahat & Keşif</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Sabah Rutinleri</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Zihinsel Denge</span>
+      <span class="marquee-item"><span class="marquee-dot"></span> Alışkanlıklar</span>
+    </div>
+  </div>
+
   <!-- KATEGORİLER -->
-  <section class="kategoriler container">
-    <div class="kategori-grid">
-      <a href="beden/" class="kategori-kart beden">
-        <span class="kat-icon">💪</span>
+  <section class="kategoriler">
+    <div class="kat-header">
+      <div>
+        <p class="kat-header-sayi">03 Kategori</p>
+        <h2>Ne okumak<br>istersin?</h2>
+      </div>
+      <a href="#son-yazilar" class="kat-header-link">Tüm yazılar <span>→</span></a>
+    </div>
+    <div class="kat-grid">
+      <a href="beden/" class="kat-kart">
+        <span class="kat-num">01</span>
+        <div class="kat-icon">💪</div>
         <h2 class="kat-isim">Beden</h2>
-        <p class="kat-aciklama">Beslenme, uyku, hareket. Bedeni iyi hissettiren küçük değişimler.</p>
-        <span class="kat-link">Yazıları oku →</span>
+        <p class="kat-aciklama">Beslenme, uyku, hareket. Bedeni iyi hissettiren küçük değişimler üzerine dürüst yazılar.</p>
+        <span class="kat-link">Keşfet <span>→</span></span>
       </a>
-      <a href="zihin/" class="kategori-kart zihin">
-        <span class="kat-icon">🧠</span>
+      <a href="zihin/" class="kat-kart">
+        <span class="kat-num">02</span>
+        <div class="kat-icon">🧠</div>
         <h2 class="kat-isim">Zihin</h2>
         <p class="kat-aciklama">Alışkanlıklar, stres, odaklanma. Kafanın içini biraz daha düzenlemek için.</p>
-        <span class="kat-link">Yazıları oku →</span>
+        <span class="kat-link">Keşfet <span>→</span></span>
       </a>
-      <a href="yol/" class="kategori-kart yol">
-        <span class="kat-icon">🧭</span>
+      <a href="yol/" class="kat-kart">
+        <span class="kat-num">03</span>
+        <div class="kat-icon">🧭</div>
         <h2 class="kat-isim">Yol</h2>
-        <p class="kat-aciklama">Seyahat rehberleri, kaçamak rotaları, yolun insan üzerindeki büyüsü.</p>
-        <span class="kat-link">Yazıları oku →</span>
+        <p class="kat-aciklama">Seyahat rehberleri, kaçamak rotaları ve yolun insan üzerindeki dönüştürücü etkisi.</p>
+        <span class="kat-link">Keşfet <span>→</span></span>
       </a>
     </div>
   </section>
 
   <!-- SON YAZILAR -->
-  <section class="son-yazilar container" id="son-yazilar">
-    <div class="section-header">
-      <h2 class="section-title">Son Yazılar</h2>
-      <p class="section-sub">Arada bir yazıyorum — ama yazdığımda gerçekten yazmaya değer bir şey olduğu için.</p>
+  <section class="son-yazilar" id="son-yazilar">
+    <div class="yazilar-header">
+      <div>
+        <p class="yazilar-header-sayi">Son Yazılar</p>
+        <h2>Öne çıkanlar</h2>
+      </div>
     </div>
-
-    <!-- Yazı kartları yazilar.js + liste.js tarafından otomatik doldurulur -->
-    <!-- Yeni yazı eklemek için sadece assets/js/yazilar.js dosyasını düzenle -->
-    <div class="yazilar-grid" id="son-yazilar-grid"></div>
+    <div class="yazilar-grid" id="son-yazilar-grid">
+      <!-- JS ile doldurulur -->
+    </div>
   </section>
 
-  <!-- HAKKIMDA BANT -->
+  <!-- HAKKIMDA -->
   <section class="hakkimda-bant">
-    <div class="container hakkimda-inner">
-      <div class="hakkimda-metin">
-        <h2>Merhaba 👋</h2>
-        <p>Ben de senin gibi mükemmel değilim. Ama her gün biraz daha iyi olmak için uğraşıyorum. Bu blog o uğraşın bir yansıması — denediklerimi, öğrendiklerimi ve gördüklerimi yazıyorum.</p>
-        <a href="hakkimda/" class="btn-ikincil">Daha fazlasını öğren →</a>
+    <div>
+      <p class="hakkimda-ust">Yazar hakkında</p>
+      <h2>Ben de senin gibi mükemmel değilim.</h2>
+      <p>Ama her gün biraz daha iyi olmak için uğraşıyorum. Bu blog o uğraşın bir yansıması — denediklerimi, öğrendiklerimi ve gördüklerimi yazıyorum.</p>
+      <a href="hakkimda/" class="hakkimda-btn">Daha fazla ↗</a>
+    </div>
+    <div class="hakkimda-sag">
+      <div class="hakkimda-stat">
+        <p class="stat-sayi">10+</p>
+        <p class="stat-label">Yayınlanmış yazı</p>
       </div>
-      <div class="hakkimda-deco" aria-hidden="true">✦</div>
+      <div class="hakkimda-stat">
+        <p class="stat-sayi">3</p>
+        <p class="stat-label">Kategori</p>
+      </div>
+      <div class="hakkimda-stat">
+        <p class="stat-sayi">2025</p>
+        <p class="stat-label">Yayın yılı</p>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-logo">🌿 Nefes Al</p>
-      <p class="footer-slogan">Her gün biraz daha iyi. Her yerde biraz daha özgür.</p>
-      <nav class="footer-nav">
-        <a href="beden/">Beden</a>
-        <a href="zihin/">Zihin</a>
-        <a href="yol/">Yol</a>
-        <a href="hakkimda/">Hakkımda</a>
-      </nav>
-      <p class="footer-copy">© 2025 Nefes Al. Sevgiyle yazıldı.</p>
-    </div>
+  <footer>
+    <a href="/" class="footer-logo">🌿 Nefes Al</a>
+    <nav class="footer-nav">
+      <a href="beden/">Beden</a>
+      <a href="zihin/">Zihin</a>
+      <a href="yol/">Yol</a>
+      <a href="hakkimda/">Hakkımda</a>
+    </nav>
+    <p class="footer-copy">© 2025 Nefes Al</p>
   </footer>
 
   <script src="assets/js/yazilar.js"></script>
   <script src="assets/js/liste.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animateCursor() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      cursor.style.left = mx + 'px';
+      cursor.style.top  = my + 'px';
+      ring.style.left   = rx + 'px';
+      ring.style.top    = ry + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+      el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+    });
+
+    // Mobil nav
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    if (toggle) toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.kat-kart, .yazi-kart').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(32px)';
+      el.style.transition = 'opacity .6s ease, transform .6s ease';
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>
