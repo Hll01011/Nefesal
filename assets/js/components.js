@@ -21,15 +21,17 @@ function aktifSayfa() {
 }
 
 // ── Kök yolu hesapla ─────────────────────────────
-// beden/yazilar/yazi.html → ../../
-// beden/index.html        → ../
-// index.html              → ./
+// GitHub Pages'de URL şöyle görünür:
+// /Nefesal/                        → kök
+// /Nefesal/beden/                  → 1 seviye
+// /Nefesal/beden/yazilar/yazi.html → 2 seviye
 function kokYolu() {
   const url = window.location.pathname;
-  const depth = (url.match(/\//g) || []).length - 1;
-  if (depth === 0) return './';
-  if (depth === 1) return '../';
-  return '../../';
+  // Slash sayısına göre değil, bilinen path segmentlerine göre belirle
+  if (url.match(/\/(beden|zihin|yol|hakkimda)\/yazilar\//)) return '../../';
+  if (url.match(/\/(beden|zihin|yol|hakkimda)\//)) return '../';
+  if (url.match(/\/(beden|zihin|yol|hakkimda)$/)) return '../';
+  return './';
 }
 
 // ── Nav HTML'ini üret ────────────────────────────
