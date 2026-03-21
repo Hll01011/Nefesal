@@ -7,67 +7,35 @@
   <meta name="description" content="Beslenme, uyku, hareket. Bedeni iyi hissettiren küçük değişimler." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Cabinet+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/post.css" />
+  <link rel="stylesheet" href="../assets/css/kategori.css" />
 </head>
 <body>
-
-  <header class="site-header">
-    <nav class="nav container">
-      <a href="../" class="logo">🌿 Nefes Al</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="../beden/" style="color: var(--toprak); font-weight:500;">💪 Beden</a></li>
-        <li><a href="../zihin/">🧠 Zihin</a></li>
-        <li><a href="../yol/">🧭 Yol</a></li>
-        <li><a href="../hakkimda/">Hakkımda</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <section class="kategori-hero">
-    <div class="container">
-      <div class="breadcrumb">
-        <a href="../">Ana Sayfa</a>
-        <span>›</span>
-        <span>Beden</span>
-      </div>
-      <div class="kategori-hero-inner" style="margin-top: 24px;">
-        <span class="kategori-buyuk-icon">💪</span>
-        <div>
-          <h1>Beden</h1>
-          <p>Beslenme, uyku, hareket. Bedeni iyi hissettiren küçük değişimler üzerine samimi yazılar.</p>
+  <div id="nav-placeholder"></div>
+  <main>
+    <section class="kat-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="../">Ana Sayfa</a><span>›</span><span>Beden</span></div>
+        <div class="kat-hero-icerik">
+          <span class="kat-hero-no">01</span>
+          <div>
+            <h1 class="kat-hero-baslik"><em>Beden</em> 💪</h1>
+            <p class="kat-hero-aciklama">Beslenme, uyku, hareket. Bedeni iyi hissettiren küçük değişimler üzerine dürüst yazılar.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="kategori-yazilar">
-    <div class="container">
-      <!-- Yazılar yazilar.js + liste.js tarafından otomatik doldurulur -->
-      <div class="yazilar-liste" id="kategori-liste" data-kat="beden"></div>
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-logo">🌿 Nefes Al</p>
-      <p class="footer-slogan">Her gün biraz daha iyi. Her yerde biraz daha özgür.</p>
-      <nav class="footer-nav">
-        <a href="../beden/">Beden</a>
-        <a href="../zihin/">Zihin</a>
-        <a href="../yol/">Yol</a>
-        <a href="../hakkimda/">Hakkımda</a>
-      </nav>
-      <p class="footer-copy">© 2025 Nefes Al. Sevgiyle yazıldı.</p>
-    </div>
-  </footer>
-
+    </section>
+    <section class="kat-yazilar">
+      <div class="container">
+        <div class="yazilar-liste" id="kategori-liste" data-kat="beden"></div>
+      </div>
+    </section>
+  </main>
+  <div id="footer-placeholder"></div>
   <script src="../assets/js/yazilar.js"></script>
   <script src="../assets/js/liste.js"></script>
-  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/components.js"></script>
 </body>
 </html>
