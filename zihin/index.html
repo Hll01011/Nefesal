@@ -47,45 +47,8 @@
 
   <section class="kategori-yazilar">
     <div class="container">
-      <div class="yazilar-liste">
-
-        <article class="liste-kart">
-          <div class="yazi-meta">
-            <span class="yazi-kat zihin-tag">🧠 Zihin</span>
-            <span class="yazi-tarih">Şubat 2025</span>
-          </div>
-          <h2 class="yazi-baslik">
-            <a href="yazilar/telefonu-birakamiyorum.html">Telefonu bırakamıyorsam ne yapmalıyım?</a>
-          </h2>
-          <p class="yazi-ozet">İrade meselesi değil bu. Sistemin tasarım sorunu. Ve çözümü de tasarımda.</p>
-          <a href="yazilar/telefonu-birakamiyorum.html" class="yazi-devami">Devamını oku →</a>
-        </article>
-
-        <article class="liste-kart">
-          <div class="yazi-meta">
-            <span class="yazi-kat zihin-tag">🧠 Zihin</span>
-            <span class="yazi-tarih">Ocak 2025</span>
-          </div>
-          <h2 class="yazi-baslik">
-            <a href="yazilar/atomic-habits.html">Atomic Habits'ten hayatıma uyguladığım 3 şey</a>
-          </h2>
-          <p class="yazi-ozet">Kitabın tamamını uygulamak zorunda değilsin. Bu üç fikir bile yeterince dönüştürücü.</p>
-          <a href="yazilar/atomic-habits.html" class="yazi-devami">Devamını oku →</a>
-        </article>
-
-        <article class="liste-kart">
-          <div class="yazi-meta">
-            <span class="yazi-kat zihin-tag">🧠 Zihin</span>
-            <span class="yazi-tarih">Aralık 2024</span>
-          </div>
-          <h2 class="yazi-baslik">
-            <a href="yazilar/yapilacaklar-listesi.html">Yapılacaklar listesi neden işe yaramıyor?</a>
-          </h2>
-          <p class="yazi-ozet">Her gün liste yapıyorsun, hiçbir zaman bitmiyor. Sorun listenin kendisinde değil.</p>
-          <a href="yazilar/yapilacaklar-listesi.html" class="yazi-devami">Devamını oku →</a>
-        </article>
-
-      </div>
+      <!-- Yazılar yazilar.js + liste.js tarafından otomatik doldurulur -->
+      <div class="yazilar-liste" id="kategori-liste" data-kat="zihin"></div>
     </div>
   </section>
 
@@ -103,6 +66,8 @@
     </div>
   </footer>
 
+  <script src="../assets/js/yazilar.js"></script>
+  <script src="../assets/js/liste.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
