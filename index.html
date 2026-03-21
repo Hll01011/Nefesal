@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nefes Al — Her gün biraz daha iyi, her yerde biraz daha özgür</title>
+  <title>Nefes Al — Her gün biraz daha iyi</title>
   <meta name="description" content="Sağlık, kişisel gelişim ve seyahat üzerine samimi bir Türkçe blog." />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
-  <!-- NAV -->
+  <div class="cur" id="cur"></div>
+  <div class="cur-ring" id="cur-ring"></div>
+
   <header class="site-header">
     <nav class="nav container">
       <a href="/" class="logo">🌿 Nefes Al</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
       <ul class="nav-links" id="navLinks">
         <li><a href="beden/">Beden</a></li>
         <li><a href="zihin/">Zihin</a></li>
@@ -25,19 +25,18 @@
     </nav>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
       <span class="hero-eyebrow">Hayata dair — 2025</span>
       <h1 class="hero-title">
         Her gün<br>
-        <em>biraz</em><br>
-        daha iyi.
+        <em>biraz</em>
+        <span class="indent">daha iyi.</span>
       </h1>
-      <p class="hero-sub">Sağlık, zihin ve seyahat üzerine; süslü değil, gerçek yazılar. Mükemmel olmak için değil, daha iyi hissetmek için.</p>
+      <p class="hero-sub">Sağlık, zihin ve seyahat üzerine; süslü değil, gerçek yazılar.</p>
       <div class="hero-cta">
         <a href="#son-yazilar" class="btn-primary">Yazılara göz at ↓</a>
-        <a href="hakkimda/" class="cta-arrow" title="Hakkımda">↗</a>
+        <a href="hakkimda/" class="cta-arrow">↗</a>
       </div>
     </div>
     <div class="hero-right">
@@ -50,25 +49,23 @@
     </div>
   </section>
 
-  <!-- MARQUEE -->
   <div class="marquee-wrap">
     <div class="marquee-track">
-      <span class="marquee-item"><span class="marquee-dot"></span> Sağlıklı Yaşam</span>
-      <span class="marquee-item"><span class="marquee-dot"></span> Kişisel Gelişim</span>
-      <span class="marquee-item"><span class="marquee-dot"></span> Seyahat & Keşif</span>
-      <span class="marquee-item"><span class="marquee-dot"></span> Sabah Rutinleri</span>
-      <span class="marquee-item"><span class="marquee-dot"></span> Zihinsel Denge</span>
-      <span class="marquee-item"><span class="marquee-dot"></span> Alışkanlıklar</span>
-      <span class="marquee-item"><span class="marquee-dot"></span> Sağlıklı Yaşam</span>
-      <span class="marquee-item"><span class="marquee-dot"></span> Kişisel Gelişim</span>
-      <span class="marquee-item"><span class="marquee-dot"></span> Seyahat & Keşif</span>
-      <span class="marquee-item"><span class="marquee-dot"></span> Sabah Rutinleri</span>
-      <span class="marquee-item"><span class="marquee-dot"></span> Zihinsel Denge</span>
-      <span class="marquee-item"><span class="marquee-dot"></span> Alışkanlıklar</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Sağlıklı Yaşam</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Kişisel Gelişim</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Seyahat & Keşif</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Sabah Rutinleri</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Zihinsel Denge</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Alışkanlıklar</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Sağlıklı Yaşam</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Kişisel Gelişim</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Seyahat & Keşif</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Sabah Rutinleri</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Zihinsel Denge</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Alışkanlıklar</span>
     </div>
   </div>
 
-  <!-- KATEGORİLER -->
   <section class="kategoriler">
     <div class="container">
       <div class="kat-header">
@@ -79,21 +76,21 @@
         <a href="#son-yazilar" class="kat-header-link">Tüm yazılar →</a>
       </div>
       <div class="kategori-grid">
-        <a href="beden/" class="kategori-kart">
+        <a href="beden/" class="kategori-kart reveal">
           <span class="kat-num">01</span>
           <div class="kat-icon">💪</div>
           <h2 class="kat-isim">Beden</h2>
           <p class="kat-aciklama">Beslenme, uyku, hareket. Bedeni iyi hissettiren küçük değişimler.</p>
           <span class="kat-link">Keşfet →</span>
         </a>
-        <a href="zihin/" class="kategori-kart">
+        <a href="zihin/" class="kategori-kart reveal">
           <span class="kat-num">02</span>
           <div class="kat-icon">🧠</div>
           <h2 class="kat-isim">Zihin</h2>
-          <p class="kat-aciklama">Alışkanlıklar, stres, odaklanma. Kafanın içini biraz daha düzenlemek için.</p>
+          <p class="kat-aciklama">Alışkanlıklar, stres, odaklanma. Kafanın içini biraz daha düzenlemek.</p>
           <span class="kat-link">Keşfet →</span>
         </a>
-        <a href="yol/" class="kategori-kart">
+        <a href="yol/" class="kategori-kart reveal">
           <span class="kat-num">03</span>
           <div class="kat-icon">🧭</div>
           <h2 class="kat-isim">Yol</h2>
@@ -104,7 +101,6 @@
     </div>
   </section>
 
-  <!-- SON YAZILAR -->
   <section class="son-yazilar" id="son-yazilar">
     <div class="container">
       <div class="yazilar-header">
@@ -113,24 +109,21 @@
           <h2>Öne çıkanlar</h2>
         </div>
       </div>
-      <!-- Yazılar yazilar.js + liste.js tarafından otomatik doldurulur -->
       <div class="yazilar-grid" id="son-yazilar-grid"></div>
     </div>
   </section>
 
-  <!-- HAKKIMDA -->
   <section class="hakkimda-bant">
     <div class="hakkimda-inner">
       <div class="hakkimda-metin">
         <h2>Ben de senin gibi mükemmel değilim.</h2>
-        <p>Ama her gün biraz daha iyi olmak için uğraşıyorum. Bu blog o uğraşın bir yansıması — denediklerimi, öğrendiklerimi ve gördüklerimi yazıyorum.</p>
+        <p>Ama her gün biraz daha iyi olmak için uğraşıyorum. Bu blog o uğraşın yansıması.</p>
         <a href="hakkimda/" class="btn-ikincil">Daha fazla ↗</a>
       </div>
       <div class="hakkimda-deco">✦</div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p class="footer-logo">🌿 Nefes Al</p>
@@ -141,32 +134,54 @@
         <a href="yol/">Yol</a>
         <a href="hakkimda/">Hakkımda</a>
       </nav>
-      <p class="footer-copy">© 2025 Nefes Al. Sevgiyle yazıldı.</p>
+      <p class="footer-copy">© 2025 Nefes Al</p>
     </div>
   </footer>
 
   <script src="assets/js/yazilar.js"></script>
   <script src="assets/js/liste.js"></script>
   <script>
-    // Mobil menü
+    // ── Custom cursor ──────────────────────
+    const cur = document.getElementById('cur');
+    const ring = document.getElementById('cur-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+    (function tick() {
+      rx += (mx - rx) * .1;
+      ry += (my - ry) * .1;
+      cur.style.left  = mx + 'px';
+      cur.style.top   = my + 'px';
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(tick);
+    })();
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { cur.classList.add('big'); ring.classList.add('big'); });
+      el.addEventListener('mouseleave', () => { cur.classList.remove('big'); ring.classList.remove('big'); });
+    });
+
+    // ── Mobil nav ─────────────────────────
     const toggle = document.getElementById('navToggle');
     const links  = document.getElementById('navLinks');
     if (toggle) toggle.addEventListener('click', () => links.classList.toggle('open'));
 
-    // Scroll reveal
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.kategori-kart, .yazi-kart, .liste-kart').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(24px)';
-      el.style.transition = 'opacity .6s ease, transform .6s ease';
-      observer.observe(el);
+    // ── Scroll reveal ──────────────────────
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .yazi-kart, .liste-kart').forEach(el => {
+      el.classList.add('reveal');
+      obs.observe(el);
+    });
+
+    // ── Nav scroll efekti ──────────────────
+    window.addEventListener('scroll', () => {
+      document.querySelector('.site-header').style.borderBottomColor =
+        window.scrollY > 50 ? 'var(--line)' : 'transparent';
     });
   </script>
 </body>
