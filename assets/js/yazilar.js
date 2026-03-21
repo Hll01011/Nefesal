@@ -14,7 +14,15 @@
  */
 
 const yazilar = [
-
+{
+    baslik: "Sabah yürüyüşü neden her şeyden iyi geliyor?",
+    ozet:   "Spor salonuna gitmek zorunda değilsin. 20 dakika yeterli.",
+    url:    "beden/yazilar/sabah-yuruyusu.html",
+    kat:    "beden",
+    tarih:  "Nisan 2025",
+    sure:   "4 dk"
+  },
+  
   // ── BEDEN ──────────────────────────────────────────
   {
     baslik: "Sabah 6'da kalkmayı alışkanlığa dönüştürdüm — işte nasıl",
