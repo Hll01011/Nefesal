@@ -59,8 +59,9 @@ ul{list-style:none}
   border-radius:50%;
   position:fixed;pointer-events:none;z-index:9999;
   transform:translate(-50%,-50%);
-  transition:width .3s,height .3s,background .3s;
+  transition:width .3s,height .3s,background .3s,opacity .3s;
   mix-blend-mode:screen;
+  opacity:0;
 }
 .cur-ring{
   width:40px;height:40px;
@@ -69,10 +70,10 @@ ul{list-style:none}
   position:fixed;pointer-events:none;z-index:9998;
   transform:translate(-50%,-50%);
   transition:width .4s var(--ease),height .4s var(--ease),opacity .3s;
-  opacity:.4;
+  opacity:0;
 }
 .cur.big{width:4px;height:4px}
-.cur-ring.big{width:60px;height:60px;opacity:.2}
+.cur-ring.big{width:60px;height:60px}
 
 /* ── NAV ──────────────────────────────────── */
 .site-header{
