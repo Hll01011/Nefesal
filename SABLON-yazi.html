@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✏️ 1. SAYFA BAŞLIĞI — Yazının başlığını buraya yaz -->
+  <title>YAZI BAŞLIĞI — Nefes Al</title>
+
+  <!-- ✏️ 2. META AÇIKLAMA — Google'da görünen kısa açıklama (1-2 cümle) -->
+  <meta name="description" content="KISA AÇIKLAMA." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- ⚠️ DİKKAT: Bu şablon beden/yazilar/ klasörü içindir.
+       Farklı bir klasördeysen ../../ yollarını güncelle:
+       - zihin/yazilar/ → ../../assets/... (aynı)
+       - yol/yazilar/   → ../../assets/... (aynı) -->
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/post.css" />
+</head>
+<body>
+
+  <!-- NAV — Hangi kategorideysen o linke style ekle -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../../" class="logo">🌿 Nefes Al</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <!-- ✏️ 3. Hangi kategorideysen ona style="color: var(--toprak); font-weight:500;" ekle -->
+        <li><a href="../../beden/">💪 Beden</a></li>
+        <li><a href="../../zihin/">🧠 Zihin</a></li>
+        <li><a href="../../yol/">🧭 Yol</a></li>
+        <li><a href="../../hakkimda/">Hakkımda</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- BREADCRUMB — Üst gezinti yolu -->
+      <!-- ✏️ 4. Kategoriyi güncelle -->
+      <div class="breadcrumb">
+        <a href="../../">Ana Sayfa</a>
+        <span>›</span>
+        <a href="../../beden/">Beden</a>   <!-- beden / zihin / yol -->
+        <span>›</span>
+        <span>YAZI KISA ADI</span>
+      </div>
+
+      <article>
+
+        <!-- BAŞLIK ALANI -->
+        <header class="post-hero">
+          <div class="post-meta">
+            <!-- ✏️ 5. Kategori etiketi — sadece birini bırak, diğerlerini sil -->
+            <span class="yazi-kat beden-tag post-kat">💪 Beden</span>
+            <!-- <span class="yazi-kat zihin-tag post-kat">🧠 Zihin</span> -->
+            <!-- <span class="yazi-kat yol-tag post-kat">🧭 Yol</span>   -->
+
+            <!-- ✏️ 6. Tarih ve okuma süresi -->
+            <span class="post-tarih">Nisan 2025</span>
+            <span class="post-sure">5 dk okuma</span>
+          </div>
+
+          <!-- ✏️ 7. Ana başlık -->
+          <h1 class="post-baslik">YAZI BAŞLIĞI</h1>
+
+          <!-- ✏️ 8. Giriş cümlesi — okuyucuyu içine çeken 1-2 cümle -->
+          <p class="post-giris">GİRİŞ CÜMLESİ. Okuyucuyu içine çekecek, merak uyandıracak bir şey.</p>
+        </header>
+
+        <!-- YAZI İÇERİĞİ — Buradan itibaren yaz -->
+        <div class="post-icerik">
+
+          <!-- ✏️ 9. İçerik buraya geliyor -->
+          <!-- Kullanabileceğin elemanlar: -->
+
+          <!-- Normal paragraf: -->
+          <p>Paragraf metni buraya.</p>
+
+          <!-- Bölüm başlığı: -->
+          <h2>Bölüm Başlığı</h2>
+
+          <!-- Alt başlık: -->
+          <h3>Alt Başlık</h3>
+
+          <!-- Alıntı kutusu: -->
+          <blockquote>
+            <p>Vurgulamak istediğin bir cümle veya alıntı.</p>
+          </blockquote>
+
+          <!-- Bilgi/ipucu kutusu: -->
+          <div class="bilgi-kutusu">
+            <p>💡 <strong>İpucu:</strong> Okuyucuya pratik bir bilgi veya not.</p>
+          </div>
+
+          <!-- Madde listesi: -->
+          <ul>
+            <li>Madde 1</li>
+            <li>Madde 2</li>
+            <li>Madde 3</li>
+          </ul>
+
+          <!-- Numaralı liste: -->
+          <ol>
+            <li>Adım 1</li>
+            <li>Adım 2</li>
+          </ol>
+
+        </div>
+        <!-- / YAZI İÇERİĞİ -->
+
+        <!-- ALT — Geri butonu ve diğer yazılar -->
+        <footer class="post-footer">
+
+          <!-- ✏️ 10. Kategori linkini güncelle -->
+          <a href="../../beden/" class="btn-geri">← Beden yazılarına dön</a>
+
+          <h3>Diğer yazılar</h3>
+          <div class="diger-yazilar">
+
+            <!-- ✏️ 11. İlgili 2 yazıyı buraya ekle -->
+            <a href="YAZI-1-DOSYAADI.html" class="diger-kart">
+              <span class="yazi-kat beden-tag" style="font-size:0.7rem; padding:3px 8px;">💪 Beden</span>
+              <p style="margin-top:8px;">İlgili yazı 1 başlığı</p>
+            </a>
+            <a href="YAZI-2-DOSYAADI.html" class="diger-kart">
+              <span class="yazi-kat beden-tag" style="font-size:0.7rem; padding:3px 8px;">💪 Beden</span>
+              <p style="margin-top:8px;">İlgili yazı 2 başlığı</p>
+            </a>
+
+          </div>
+        </footer>
+
+      </article>
+    </div>
+  </main>
+
+  <!-- FOOTER — Değiştirme -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-logo">🌿 Nefes Al</p>
+      <p class="footer-slogan">Her gün biraz daha iyi. Her yerde biraz daha özgür.</p>
+      <nav class="footer-nav">
+        <a href="../../beden/">Beden</a>
+        <a href="../../zihin/">Zihin</a>
+        <a href="../../yol/">Yol</a>
+        <a href="../../hakkimda/">Hakkımda</a>
+      </nav>
+      <p class="footer-copy">© 2025 Nefes Al. Sevgiyle yazıldı.</p>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>
+
+<!--
+==============================================
+  YAZI EKLEME KONTROL LİSTESİ
+==============================================
+
+1. [ ] Bu dosyayı uygun klasöre kaydet:
+       beden/yazilar/yazi-adi.html
+       zihin/yazilar/yazi-adi.html
+       yol/yazilar/yazi-adi.html
+
+2. [ ] Dosya adı kuralları:
+       ✅ kucuk-harf-tire-ile.html
+       ✅ sabah-yuruyusu.html
+       ❌ Büyük Harf.html
+       ❌ boşluk var.html
+
+3. [ ] <title> güncellendi
+4. [ ] <meta description> güncellendi
+5. [ ] Nav'da aktif kategori vurgulandı
+6. [ ] Breadcrumb'da kategori ve kısa ad yazıldı
+7. [ ] Kategori etiketi seçildi (beden/zihin/yol)
+8. [ ] Tarih ve okuma süresi girildi
+9. [ ] H1 başlık yazıldı
+10.[ ] Giriş cümlesi yazıldı
+11.[ ] İçerik yazıldı
+12.[ ] Geri butonu doğru kategoriye bağlı
+13.[ ] Altta 2 ilgili yazı linklendi
+
+14.[ ] assets/js/yazilar.js'e eklendi:
+       {
+         baslik: "...",
+         ozet:   "...",
+         url:    "kategori/yazilar/dosya-adi.html",
+         kat:    "beden",
+         tarih:  "Nisan 2025",
+         sure:   "5 dk"
+       },
+
+==============================================
+-->
