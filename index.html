@@ -9,9 +9,6 @@
 </head>
 <body>
 
-  <div class="cur" id="cur"></div>
-  <div class="cur-ring" id="cur-ring"></div>
-
   <header class="site-header">
     <nav class="nav container">
       <a href="/" class="logo">🌿 Nefes Al</a>
@@ -76,21 +73,21 @@
         <a href="#son-yazilar" class="kat-header-link">Tüm yazılar →</a>
       </div>
       <div class="kategori-grid">
-        <a href="beden/" class="kategori-kart reveal">
+        <a href="beden/" class="kategori-kart">
           <span class="kat-num">01</span>
           <div class="kat-icon">💪</div>
           <h2 class="kat-isim">Beden</h2>
           <p class="kat-aciklama">Beslenme, uyku, hareket. Bedeni iyi hissettiren küçük değişimler.</p>
           <span class="kat-link">Keşfet →</span>
         </a>
-        <a href="zihin/" class="kategori-kart reveal">
+        <a href="zihin/" class="kategori-kart">
           <span class="kat-num">02</span>
           <div class="kat-icon">🧠</div>
           <h2 class="kat-isim">Zihin</h2>
           <p class="kat-aciklama">Alışkanlıklar, stres, odaklanma. Kafanın içini biraz daha düzenlemek.</p>
           <span class="kat-link">Keşfet →</span>
         </a>
-        <a href="yol/" class="kategori-kart reveal">
+        <a href="yol/" class="kategori-kart">
           <span class="kat-num">03</span>
           <div class="kat-icon">🧭</div>
           <h2 class="kat-isim">Yol</h2>
@@ -140,49 +137,6 @@
 
   <script src="assets/js/yazilar.js"></script>
   <script src="assets/js/liste.js"></script>
-  <script>
-    // ── Custom cursor ──────────────────────
-    const cur = document.getElementById('cur');
-    const ring = document.getElementById('cur-ring');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-
-    (function tick() {
-      rx += (mx - rx) * .1;
-      ry += (my - ry) * .1;
-      cur.style.left  = mx + 'px';
-      cur.style.top   = my + 'px';
-      ring.style.left = rx + 'px';
-      ring.style.top  = ry + 'px';
-      requestAnimationFrame(tick);
-    })();
-
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => { cur.classList.add('big'); ring.classList.add('big'); });
-      el.addEventListener('mouseleave', () => { cur.classList.remove('big'); ring.classList.remove('big'); });
-    });
-
-    // ── Mobil nav ─────────────────────────
-    const toggle = document.getElementById('navToggle');
-    const links  = document.getElementById('navLinks');
-    if (toggle) toggle.addEventListener('click', () => links.classList.toggle('open'));
-
-    // ── Scroll reveal ──────────────────────
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal, .yazi-kart, .liste-kart').forEach(el => {
-      el.classList.add('reveal');
-      obs.observe(el);
-    });
-
-    // ── Nav scroll efekti ──────────────────
-    window.addEventListener('scroll', () => {
-      document.querySelector('.site-header').style.borderBottomColor =
-        window.scrollY > 50 ? 'var(--line)' : 'transparent';
-    });
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
