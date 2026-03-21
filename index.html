@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nefes Al — Her gün biraz daha iyi, her yerde biraz daha özgür</title>
+  <meta name="description" content="Sağlık, kişisel gelişim ve seyahat üzerine samimi bir Türkçe blog." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="/" class="logo">🌿 Nefes Al</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="beden/">💪 Beden</a></li>
+        <li><a href="zihin/">🧠 Zihin</a></li>
+        <li><a href="yol/">🧭 Yol</a></li>
+        <li><a href="hakkimda/">Hakkımda</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="hero-eyebrow">Hoş geldin ✦</span>
+      <h1 class="hero-title">Her gün biraz<br><em>daha iyi.</em></h1>
+      <p class="hero-sub">Sağlık, zihin ve seyahat üzerine; süslü değil, samimi yazılar.</p>
+      <a href="#son-yazilar" class="btn-primary">Yazılara göz at</a>
+    </div>
+    <div class="hero-deco" aria-hidden="true">
+      <div class="deco-circle c1"></div>
+      <div class="deco-circle c2"></div>
+      <div class="deco-leaf">🌿</div>
+    </div>
+  </section>
+
+  <!-- KATEGORİLER -->
+  <section class="kategoriler container">
+    <div class="kategori-grid">
+      <a href="beden/" class="kategori-kart beden">
+        <span class="kat-icon">💪</span>
+        <h2 class="kat-isim">Beden</h2>
+        <p class="kat-aciklama">Beslenme, uyku, hareket. Bedeni iyi hissettiren küçük değişimler.</p>
+        <span class="kat-link">Yazıları oku →</span>
+      </a>
+      <a href="zihin/" class="kategori-kart zihin">
+        <span class="kat-icon">🧠</span>
+        <h2 class="kat-isim">Zihin</h2>
+        <p class="kat-aciklama">Alışkanlıklar, stres, odaklanma. Kafanın içini biraz daha düzenlemek için.</p>
+        <span class="kat-link">Yazıları oku →</span>
+      </a>
+      <a href="yol/" class="kategori-kart yol">
+        <span class="kat-icon">🧭</span>
+        <h2 class="kat-isim">Yol</h2>
+        <p class="kat-aciklama">Seyahat rehberleri, kaçamak rotaları, yolun insan üzerindeki büyüsü.</p>
+        <span class="kat-link">Yazıları oku →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- SON YAZILAR -->
+  <section class="son-yazilar container" id="son-yazilar">
+    <div class="section-header">
+      <h2 class="section-title">Son Yazılar</h2>
+      <p class="section-sub">Arada bir yazıyorum — ama yazdığımda gerçekten yazmaya değer bir şey olduğu için.</p>
+    </div>
+
+    <div class="yazilar-grid">
+
+      <article class="yazi-kart featured">
+        <div class="yazi-meta">
+          <span class="yazi-kat beden-tag">💪 Beden</span>
+          <span class="yazi-tarih">Mart 2025</span>
+        </div>
+        <h3 class="yazi-baslik"><a href="beden/yazilar/sabah-rutini.html">Sabah 6'da kalkmayı alışkanlığa dönüştürdüm — işte nasıl</a></h3>
+        <p class="yazi-ozet">3 ay boyunca başarısız oldum. Sonra tek bir şeyi değiştirdim. Bu yazı o değişiklik hakkında.</p>
+        <a href="beden/yazilar/sabah-rutini.html" class="yazi-devami">Devamını oku →</a>
+      </article>
+
+      <article class="yazi-kart">
+        <div class="yazi-meta">
+          <span class="yazi-kat zihin-tag">🧠 Zihin</span>
+          <span class="yazi-tarih">Şubat 2025</span>
+        </div>
+        <h3 class="yazi-baslik"><a href="zihin/yazilar/telefonu-birakamiyorum.html">Telefonu bırakamıyorsam ne yapmalıyım?</a></h3>
+        <p class="yazi-ozet">İrade meselesi değil bu. Sistemin tasarım sorunu. Ve çözümü de tasarımda.</p>
+        <a href="zihin/yazilar/telefonu-birakamiyorum.html" class="yazi-devami">Devamını oku →</a>
+      </article>
+
+      <article class="yazi-kart">
+        <div class="yazi-meta">
+          <span class="yazi-kat yol-tag">🧭 Yol</span>
+          <span class="yazi-tarih">Ocak 2025</span>
+        </div>
+        <h3 class="yazi-baslik"><a href="yol/yazilar/mersin-kacamak-rotasi.html">Mersin'den 3 günlük kaçamak rotası</a></h3>
+        <p class="yazi-ozet">Uzağa gitmenize gerek yok. Yakın çevrede nefes alacak yerler bulmak bir sanattır.</p>
+        <a href="yol/yazilar/mersin-kacamak-rotasi.html" class="yazi-devami">Devamını oku →</a>
+      </article>
+
+      <article class="yazi-kart">
+        <div class="yazi-meta">
+          <span class="yazi-kat beden-tag">💪 Beden</span>
+          <span class="yazi-tarih">Ocak 2025</span>
+        </div>
+        <h3 class="yazi-baslik"><a href="beden/yazilar/seker-birakmanin-30-gunu.html">Şeker bırakmanın 30 günü — neler değişti?</a></h3>
+        <p class="yazi-ozet">Büyük bir fedakarlık bekledim. Aslında ilk haftadan sonra en zor kısım geride kalıyor.</p>
+        <a href="beden/yazilar/seker-birakmanin-30-gunu.html" class="yazi-devami">Devamını oku →</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- HAKKIMDA BANT -->
+  <section class="hakkimda-bant">
+    <div class="container hakkimda-inner">
+      <div class="hakkimda-metin">
+        <h2>Merhaba 👋</h2>
+        <p>Ben de senin gibi mükemmel değilim. Ama her gün biraz daha iyi olmak için uğraşıyorum. Bu blog o uğraşın bir yansıması — denediklerimi, öğrendiklerimi ve gördüklerimi yazıyorum.</p>
+        <a href="hakkimda/" class="btn-ikincil">Daha fazlasını öğren →</a>
+      </div>
+      <div class="hakkimda-deco" aria-hidden="true">✦</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-logo">🌿 Nefes Al</p>
+      <p class="footer-slogan">Her gün biraz daha iyi. Her yerde biraz daha özgür.</p>
+      <nav class="footer-nav">
+        <a href="beden/">Beden</a>
+        <a href="zihin/">Zihin</a>
+        <a href="yol/">Yol</a>
+        <a href="hakkimda/">Hakkımda</a>
+      </nav>
+      <p class="footer-copy">© 2025 Nefes Al. Sevgiyle yazıldı.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
