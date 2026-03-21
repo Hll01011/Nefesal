@@ -13,7 +13,18 @@
   <link rel="stylesheet" href="../assets/css/kategori.css" />
 </head>
 <body>
-  <div id="nav-placeholder"></div>
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="../" class="logo">🌿 Nefes Al</a>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../beden/" style="color:var(--toprak);font-weight:500;">💪 Beden</a></li>
+        <li><a href="../zihin/">🧠 Zihin</a></li>
+        <li><a href="../yol/">🧭 Yol</a></li>
+        <li><a href="../hakkimda/">Hakkımda</a></li>
+      </ul>
+    </nav>
+  </header>
   <main>
     <section class="kat-hero">
       <div class="container">
@@ -33,9 +44,21 @@
       </div>
     </section>
   </main>
-  <div id="footer-placeholder"></div>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-logo">🌿 Nefes Al</p>
+      <p class="footer-slogan">Her gün biraz daha iyi. Her yerde biraz daha özgür.</p>
+      <nav class="footer-nav">
+        <a href="../beden/">Beden</a>
+        <a href="../zihin/">Zihin</a>
+        <a href="../yol/">Yol</a>
+        <a href="../hakkimda/">Hakkımda</a>
+      </nav>
+      <p class="footer-copy">© 2025 Nefes Al. Sevgiyle yazıldı.</p>
+    </div>
+  </footer>
   <script src="../assets/js/yazilar.js"></script>
   <script src="../assets/js/liste.js"></script>
-  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>
